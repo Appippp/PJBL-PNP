@@ -13,7 +13,15 @@ return new class extends Migration
     {
         Schema::create('dosen', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->index('fk_dosen_to_users');
+            $table->foreignId('prodi_id')->nullable()->index('fk_dosen_to_prodi');
+            $table->string('nidn')->unique();
+            $table->string('nama_dosen');
+            $table->string('no_telp');
+            $table->enum('jk', [1,2]);
+            $table->longText('alamat')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

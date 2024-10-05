@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->index('fk_mahasiswa_to_users');
+            $table->foreignId('prodi_id')->nullable()->index('fk_mahasiswa_to_prodi');
+            $table->string('nim')->unique();
+            $table->string('nama_mahasiswa');
+            $table->string('tahun_masuk');
+            $table->enum('jk', [1,2]);
+            $table->string('no_telp');
+            $table->longText('alamat')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('mahasiswa', function (Blueprint $table) {
-            //
+            $table->foreign('user_id', 'fk_mahasiswa_to_users')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('prodi_id', 'fk_mahasiswa_to_prodi')->references('id')->on('prodi')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 
@@ -22,7 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('mahasiswa', function (Blueprint $table) {
-            //
+            $table->dropForeign('fk_mahasiswa_to_users');
+            $table->dropForeign('fk_mahasiswa_to_prodi');
         });
     }
 };

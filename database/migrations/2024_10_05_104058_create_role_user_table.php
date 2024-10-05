@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('role_user', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('role_id')->nullable()->index('fk_role_user_to_role');
+            $table->foreignId('user_id')->nullable()->index('fk_role_user_to_users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

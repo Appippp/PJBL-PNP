@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('type_user_id')->nullable()->index('fk_detail_user_to_type_user');
             $table->string('contact')->nullable();
             $table->string('address')->nullable();
-            $table->string('gender')->nullable();
+            $table->enum('gender', [1,2])->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
