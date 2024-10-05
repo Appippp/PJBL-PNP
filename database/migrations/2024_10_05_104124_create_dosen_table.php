@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('prodi_id')->nullable()->index('fk_dosen_to_prodi');
             $table->string('nidn')->unique();
             $table->string('nama_dosen');
-            $table->string('no_telp');
             $table->enum('jk', [1,2]);
+            $table->string('no_telp');
             $table->longText('alamat')->nullable();
             $table->timestamps();
             $table->softDeletes();
