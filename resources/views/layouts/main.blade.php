@@ -15,6 +15,8 @@
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
+
+    <!-- Site wrapper -->
     <div class="wrapper">
 
         <!-- sweet alert -->
@@ -39,7 +41,8 @@
 
         <div class="control-sidebar-bg"></div>
 
-    </div><!-- ./wrapper -->
+    </div>
+    <!-- ./wrapper -->
 
     @stack('before-script')
         @include('includes.backsite.script')
