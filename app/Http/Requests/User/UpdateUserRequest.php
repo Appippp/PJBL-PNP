@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Prodi;
+namespace App\Http\Requests\User;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
-
-class UpdateProdiRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +23,14 @@ class UpdateProdiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'kode_prodi' => [
-                'required', 'string', 'max:255',Rule::unique('prodi')->ignore($this->prodi)
+            'username' => [
+                'required', 'string', 'max:255',Rule::unique('users')->ignore($this->users),
             ],
-            'nama_prodi' => [
-                'required', 'string', 'max:255',
+            'email' => [
+                'required', 'string', 'email', 'max:255',Rule::unique('users')->ignore($this->users),
+            ],
+            'password' => [
+                'nullable', 'string', 'min:6', 'mixedCase',
             ],
         ];
     }

@@ -23,17 +23,15 @@
     <section class="content">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">List Prodi</h3>
+                <h3 class="box-title">LIST PRODI</h3>
             </div><!-- /.box-header -->
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                            <th>Rendering engine</th>
-                            <th>Browser</th>
-                            <th>Platform(s)</th>
-                            <th>Engine version</th>
-                            <th>CSS grade</th>
+                            <th>No</th>
+                            <th>Kode Prodi</th>
+                            <th>Nama Prodi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +39,7 @@
                             <td></td>
                         </tr>
                     </tbody>
+
                 </table>
             </div><!-- /.box-body -->
         </div><!-- /.box -->
@@ -56,6 +55,10 @@
     <!-- DataTables -->
     <script src="{{ asset('assets/backsite/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/backsite/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('assets/backsite/dist/js/app.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('assets/backsite/dist/js/demo.js') }}"></script>
     <!-- page script -->
     <script>
       $(function () {

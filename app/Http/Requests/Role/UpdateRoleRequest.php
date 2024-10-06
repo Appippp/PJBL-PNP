@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Prodi;
+namespace App\Http\Requests\Role;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
-
-class UpdateProdiRequest extends FormRequest
+class UpdateRoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +23,8 @@ class UpdateProdiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'kode_prodi' => [
-                'required', 'string', 'max:255',Rule::unique('prodi')->ignore($this->prodi)
-            ],
-            'nama_prodi' => [
-                'required', 'string', 'max:255',
+            'title' => [
+                'required', 'string', 'max:255', Rule::unique('role')->ignore($this->role),
             ],
         ];
     }

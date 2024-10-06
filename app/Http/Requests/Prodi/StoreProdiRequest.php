@@ -11,7 +11,7 @@ class StoreProdiRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class StoreProdiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'kode_prodi' => [
+                'required', 'string', 'max:255', 'unique:prodi',
+            ],
+            'nama_prodi' => [
+                'required', 'string', 'max:255',
+            ],
         ];
     }
 }
