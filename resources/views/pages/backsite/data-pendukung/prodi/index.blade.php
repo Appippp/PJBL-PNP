@@ -2,10 +2,6 @@
 
 @section('title', 'Data Prodi')
 
-@push('after-style')
-<!-- DataTables -->
-<link rel="stylesheet" href="{{ asset('assets/backsite/plugins/datatables/dataTables.bootstrap.css') }}">
-@endpush
 
 @section('content')
 
@@ -21,56 +17,117 @@
     </section>
 
     <section class="content">
-        <div class="box">
-            <div class="box-header">
-                <h3 class="box-title">LIST PRODI</h3>
-            </div><!-- /.box-header -->
-            <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Kode Prodi</th>
-                            <th>Nama Prodi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                        </tr>
-                    </tbody>
 
-                </table>
-            </div><!-- /.box-body -->
-        </div><!-- /.box -->
+        {{-- @can('prodi-create') --}}
+        <div class="box">
+            <div class="box-header with-border ">
+                <h3 class="box-title"><b>TAMBAH DATA</b></h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                    <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <form action="{{ route('backsite.prodi.store') }}" method="POST">
+                @csrf
+                <div class="box-body">
+
+                    <div class="d-flex justify-content-center">
+                        <div class="form-group row">
+                            <label for="kode-prodi" class="col-sm-4 form-label text-right">Kode Prodi <code
+                                    style="color:red;">required</code></label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="kode_prodi" name="kode_prodi" required>
+                            </div>
+                            @error('kode_prodi')
+                                <span class="invalid-feedback" role="alert">
+                                    <small class="text-danger">{{ $message }}</small>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group row">
+                            <label for="nama-prodi" class="col-sm-4 col-form-label text-right">Nama Prodi <code
+                                    style="color:red;">required</code></label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="nama_prodi" name="nama_prodi" required>
+                            </div>
+                            @error('nama_prodi')
+                                <span class="invalid-feedback" role="alert">
+                                    <small class="text-danger">{{ $message }}</small>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="text-center">
+                        </div>
+
+                    </div>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-success btn-flat pull-right"> <i class="fa fa-save"></i>
+                        Simpan</button>
+                </div><!-- /.box-footer-->
+            </form>
+        </div>
+        {{-- @endcan --}}
+
+        {{-- @can('prodi-table') --}}
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title"> <b> LIST PRODI</b></h3>
+                </div>
+                <div class="box-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Kode Prodi</th>
+                                <th>Nama Prodi</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($prodi as $key => $prodi_item)
+                                <tr data-entry-id="{{ $prodi_item->id }}">
+                                    <td>{{ isset($prodi_item->created_at) ? date('d/m/Y H:i:s', strtotime($prodi_item->created_at)) : '' }}
+                                    </td>
+                                    <td>{{ $prodi_item->kode_prodi ?? '' }}</td>
+                                    <td>{{ $prodi_item->nama_prodi ?? '' }}</td>
+                                    <td class="text-center">
+
+                                        {{-- @can('prodi-edit') --}}
+                                            <a href="{{ route('backsite.prodi.edit', $prodi_item->id) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+                                        {{-- @endcan --}}
+
+                                        {{-- @can('prodi-delete') --}}
+                                        <form action="{{ route('backsite.prodi.destroy', $prodi_item->id) }}" method="POST"
+                                            onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');"
+                                            style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </form>
+                                        {{-- @endcan --}}
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="4" class="text-center">Tidak ada data</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        {{-- @endcan --}}
+
+
     </section>
 
-@endsection
 
-@push('after-script')
-    <!-- jQuery 2.1.4 -->
-    <script src="{{ asset('assets/backsite/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
-    <!-- Bootstrap 3.3.5 -->
-    <script src="{{ asset('assets/backsite/bootstrap/js/bootstrap.min.js') }}"></script>
-    <!-- DataTables -->
-    <script src="{{ asset('assets/backsite/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('assets/backsite/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
-    <!-- AdminLTE App -->
-    <script src="{{ asset('assets/backsite/dist/js/app.min.js') }}"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('assets/backsite/dist/js/demo.js') }}"></script>
-    <!-- page script -->
-    <script>
-      $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-    </script>
-@endpush
+@endsection

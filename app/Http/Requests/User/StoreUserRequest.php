@@ -29,7 +29,7 @@ class StoreUserRequest extends FormRequest
                 'required', 'string', 'email', 'max:255', 'unique:users',
             ],
             'password' => [
-                'required', 'string', 'min:6', 'mixedCase',
+               'string', 'min:6', 'mixedCase',
             ],
         ];
     }

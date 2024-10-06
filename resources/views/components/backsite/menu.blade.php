@@ -29,7 +29,7 @@
             {{-- @can('dashboard-access') --}}
             <!-- Menu Dashboard -->
             <li class="active treeview">
-                <a href="#">
+                <a href="{{ route('backsite.dashboard.index') }}">
                     <i class="fa fa-dashboard"></i> <span>DASHBOARD</span>
                 </a>
             </li>
@@ -47,19 +47,19 @@
                 </a>
                 <ul class="treeview-menu">
                     {{-- @can('permission-access') --}}
-                        <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i>PERMISSION</a></li>
+                        <li><a href="{{ route('backsite.permission.index') }}"><i class="fa fa-circle-o"></i> PERMISSION</a></li>
                     {{-- @endcan --}}
 
                     {{-- @can('role-access') --}}
-                        <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> ROLE</a></li>
+                        <li><a href="{{ route('backsite.role.index') }}"><i class="fa fa-circle-o"></i> ROLE</a></li>
                     {{-- @endcan --}}
 
                     {{-- @can('type-user-access') --}}
-                        <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> TYPE USER</a></li>
+                        <li><a href="{{ route('backsite.type_user.index') }}"><i class="fa fa-circle-o"></i> TYPE USER</a></li>
                     {{-- @endcan --}}
 
                     {{-- @can('user-access') --}}
-                        <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i>USER</a></li>
+                        <li><a href="{{ route('backsite.user.index') }}"><i class="fa fa-circle-o"></i> USER</a></li>
                     {{-- @endcan --}}
                 </ul>
             </li>

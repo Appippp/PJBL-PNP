@@ -22,8 +22,9 @@ class DetailUser extends Model
     protected $fillable = [
         'user_id',
         'type_user',
-        'alamat',
-        'age',
+        'contact',
+        'address',
+        'gender',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -32,5 +33,10 @@ class DetailUser extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function type_user()
+    {
+        return $this->belongsTo(TypeUser::class, 'type_user_id', 'id');
     }
 }
