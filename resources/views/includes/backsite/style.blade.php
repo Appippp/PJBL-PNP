@@ -11,8 +11,6 @@
  <link rel="stylesheet" href="{{ asset('assets/backsite/dist/css/skins/_all-skins.min.css') }}">
  <!-- iCheck -->
  <link rel="stylesheet" href="{{ asset('assets/backsite/plugins/iCheck/flat/blue.css') }}">
- <!-- Morris chart -->
- <link rel="stylesheet" href="{{ asset('assets/backsite/plugins/morris/morris.css') }}">
  <!-- jvectormap -->
  <link rel="stylesheet" href="{{ asset('assets/backsite/plugins/jvectormap/jquery-jvectormap-1.2.2.css') }}">
  <!-- Date Picker -->
@@ -21,6 +19,9 @@
  <link rel="stylesheet" href="{{ asset('assets/backsite/plugins/daterangepicker/daterangepicker-bs3.css') }}">
  <!-- bootstrap wysihtml5 - text editor -->
  <link rel="stylesheet" href="{{ asset('assets/backsite/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+ <link rel="stylesheet" href="{{ asset('assets/backsite/plugins/datatables/dataTables.bootstrap.css') }}">
+
+
 
  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
