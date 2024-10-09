@@ -24,14 +24,12 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'username' => [
-                'required', 'string', 'max:255',Rule::unique('users')->ignore($this->users),
+                'required', 'string', 'max:255',
             ],
             'email' => [
-                'required', 'string', 'email', 'max:255',Rule::unique('users')->ignore($this->users),
+                'required', 'email', 'max:255',
             ],
-            'password' => [
-                'nullable', 'string', 'min:6', 'mixedCase',
-            ],
+
         ];
     }
 }

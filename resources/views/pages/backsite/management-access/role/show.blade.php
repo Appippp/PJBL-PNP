@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="box-body">
-            <table class="table table-bordered table-striped">
+            <table class="table table-bordered">
                 <tbody>
                     <tr>
                         <th style="width: 30%;">Role</th>
@@ -47,7 +47,7 @@
             </table>
         </div><!-- /.box-body -->
         <div class="box-footer">
-            <a href="{{ route('backsite.role.index') }}" class="btn btn-primary">Back to Role</a>
+            <a href="{{ route('backsite.role.index') }}" class="btn btn-default"><i class="fa fa-arrow-left"></i> Kembali</a>
         </div><!-- /.box-footer -->
     </div><!-- /.box -->
 </section>

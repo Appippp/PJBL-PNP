@@ -77,7 +77,7 @@
                 </a>
                 <ul class="treeview-menu">
                     {{-- @can('mahasiswa-access') --}}
-                        <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> DATA MAHASISWA</a></li>
+                        <li><a href="{{ route('backsite.mahasiswa.index') }}"><i class="fa fa-circle-o"></i> DATA MAHASISWA</a></li>
                     {{-- @endcan --}}
 
                     {{-- @can('dosen-access') --}}

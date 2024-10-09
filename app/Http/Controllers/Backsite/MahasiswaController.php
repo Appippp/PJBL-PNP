@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Backsite;
 
-use App\Http\Controllers\Controller;
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MahasiswaController extends Controller
 {
@@ -12,7 +13,11 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        // Load the data from the database
+        $mahasiswa = Mahasiswa::all();
+
+        // Pass the data to the view for rendering
+        return view('pages.backsite.data-pendukung.mahasiswa.index', compact('mahasiswa'));
     }
 
     /**

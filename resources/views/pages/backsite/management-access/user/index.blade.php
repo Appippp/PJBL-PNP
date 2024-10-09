@@ -74,8 +74,8 @@
                                     style="color:red;">required</code></label>
                             <div class="col-sm-6">
                                 <label for="permission">
-                                    <span class="btn btn-default btn-sm select-all">{{ 'Select All' }}</span>
-                                    <span class="btn btn-default btn-sm deselect-all">{{ 'Deselect All' }}</span>
+                                    <span class="btn btn-primary btn-sm select-all">{{ 'Select All' }}</span>
+                                    <span class="btn btn-primary btn-sm deselect-all">{{ 'Deselect All' }}</span>
                                 </label>
                                 <select name="role[]" id="role" class="form-control select2" style="width: 100%;"
                                     multiple='multiple'>
@@ -96,7 +96,7 @@
 
                         <!-- Type -->
                         <div class="form-group row">
-                            <label for="type_user_id" class="col-sm-4 form-label text-right">Type <code
+                            <label for="type_user_id" class="col-sm-4 form-label text-right">Type User<code
                                     style="color:red;">required</code></label>
                             <div class="col-sm-6">
                                 <select name="type_user_id" id="type_user_id" class="form-control select2" required>
@@ -147,25 +147,36 @@
                                 <td>{{ date('d/m/Y H:i:s', strtotime($user_item->created_at)) ?? '' }}</td>
                                 <td>{{ $user_item->username ?? '' }}</td>
                                 <td>{{ $user_item->email ?? '' }}</td>
-                                <td style="width:200px;">
+                                <td style="width:150px;">
                                     @foreach ($user_item->role as $key => $item)
                                         <span class="badge bg-yellow text-dark mr-1 mb-1">{{ $item->title }}</span>
                                     @endforeach
                                 </td>
                                 <td style="width:200px;">
-                                    <span class="badge bg-success mr-1 mb-1">{{ $user_item->detail_user->type_user->name ?? '' }}</span>
+                                    <span
+                                        class="badge bg-success mr-1 mb-1">{{ $user_item->detail_user->type_user->name ?? '' }}</span>
                                 </td>
                                 <td>
                                     {{-- @can('user-edit') --}}
-
-                                    {{-- @endcan --}}
-
-                                    {{-- @can('user-show') --}}
-
+                                    <a href="{{ route('backsite.user.edit', $user_item->id) }}"
+                                        class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                                     {{-- @endcan --}}
 
                                     {{-- @can('user-delete') --}}
+                                    <form action="{{ route('backsite.user.destroy', $user_item->id) }}" method="POST"
+                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?');"
+                                        style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                    {{-- @endcan --}}
 
+                                    {{-- @can('user-show') --}}
+                                    <a href="{{ route('backsite.user.show', $user_item->id) }}"
+                                        class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                                     {{-- @endcan --}}
                                 </td>
                             </tr>
