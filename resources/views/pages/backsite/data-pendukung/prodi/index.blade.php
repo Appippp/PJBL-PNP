@@ -19,9 +19,9 @@
     <section class="content">
 
         {{-- @can('prodi-create') --}}
-        <div class="box">
+        <div class="box collapsed-box">
             <div class="box-header with-border ">
-                <h3 class="box-title"><b>TAMBAH DATA</b></h3>
+                <h3 class="box-title">TAMBAH DATA</h3>
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fa fa-minus"></i>
@@ -77,13 +77,13 @@
         {{-- @can('prodi-table') --}}
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title"> <b> LIST PRODI</b></h3>
+                    <h3 class="box-title">LIST PRODI</h3>
                 </div>
                 <div class="box-body">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th>Date</th>
+                                <th>No</th>
                                 <th>Kode Prodi</th>
                                 <th>Nama Prodi</th>
                                 <th class="text-center">Aksi</th>
@@ -92,7 +92,7 @@
                         <tbody>
                             @forelse ($prodi as $key => $prodi_item)
                                 <tr data-entry-id="{{ $prodi_item->id }}">
-                                    <td>{{ isset($prodi_item->created_at) ? date('d/m/Y H:i:s', strtotime($prodi_item->created_at)) : '' }}
+                                    <td>{{ $loop->iteration }}</td>
                                     </td>
                                     <td>{{ $prodi_item->kode_prodi ?? '' }}</td>
                                     <td>{{ $prodi_item->nama_prodi ?? '' }}</td>
@@ -116,9 +116,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr>
-                                    <td colspan="4" class="text-center">Tidak ada data</td>
-                                </tr>
+                               <!-- tidak ada data -->
                             @endforelse
                         </tbody>
                     </table>

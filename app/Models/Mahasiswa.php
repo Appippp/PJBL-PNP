@@ -42,4 +42,19 @@ class Mahasiswa extends Model
     {
         return $this->belongsTo(Prodi::class, 'prodi_id', 'id');
     }
+
+    public function proposal()
+    {
+        return $this->hasMany(Proposal::class, 'mahasiswa_id', 'id');
+    }
+
+    public function kelompok()
+    {
+        return $this->hasMany(Kelompok::class, 'ketua_id', 'id');
+    }
+
+    public function anggota_kelompok()
+    {
+        return $this->hasMany(AnggotaKelompok::class, 'anggota_id');
+    }
 }

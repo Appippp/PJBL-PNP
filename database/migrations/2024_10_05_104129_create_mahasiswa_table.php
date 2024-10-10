@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('nim')->unique();
             $table->string('nama_mahasiswa');
             $table->string('tahun_masuk');
-            $table->enum('jk', [1,2]);
-            $table->string('no_telp');
+            $table->enum('jk', [1,2]); // 1 = laki-laki, 2 = perempuan
+            $table->string('no_telp')->nullable();
             $table->longText('alamat')->nullable();
             $table->timestamps();
             $table->softDeletes();

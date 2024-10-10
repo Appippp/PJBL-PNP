@@ -26,7 +26,7 @@ class StoreMahasiswaRequest extends FormRequest
                 'required','integer',
             ],
             'prodi_id' => [
-                'required','integer',
+                'required','in:1,2',
             ],
             'nim' => [
                 'required','string','max:255','unique:mahasiswa'
@@ -38,10 +38,10 @@ class StoreMahasiswaRequest extends FormRequest
                 'required',
             ],
             'no_telp' => [
-                'required','string','max:14',
+                'nullable','string','max:14',
             ],
             'alamat' => [
-                'required','string', 'max:10000',
+                'nullable','string', 'max:10000',
             ],
         ];
     }

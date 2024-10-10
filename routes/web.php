@@ -19,7 +19,7 @@ Route::get('/refresh-captcha', [\App\Http\Controllers\Auth\SessionController::cl
 Route::post('/login-proses', [\App\Http\Controllers\Auth\SessionController::class, 'loginProses'])->name('login-proses');
 Route::post('logout', [\App\Http\Controllers\Auth\SessionController::class, 'logout'])->name('logout');
 
-Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['auth', 'verified']], function () {
+Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['auth']], function () {
 
     Route::resource('dashboard', \App\Http\Controllers\Backsite\DashboardController::class);
 
@@ -36,5 +36,10 @@ Route::group(['prefix' => 'backsite', 'as' => 'backsite.', 'middleware' => ['aut
     Route::resource('dosen', \App\Http\Controllers\Backsite\DosenController::class);
 
     Route::resource('mahasiswa', \App\Http\Controllers\Backsite\MahasiswaController::class);
+
+    Route::resource('mitra', \App\Http\Controllers\Backsite\MitraController::class);
+
+    Route::resource('proposal', \App\Http\Controllers\Backsite\ProposalController::class);
+
 
 });

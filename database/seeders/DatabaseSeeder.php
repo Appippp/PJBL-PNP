@@ -26,7 +26,9 @@ class DatabaseSeeder extends Seeder
             TypeUserSeeder::class,
             PermissionSeeder::class,
             PermissionRoleSeeder::class,
-            DetailUserSeeder::class
+            DetailUserSeeder::class,
+            ProdiSeeder::class,
+            MitraSeeder::class,
 
         ]);
     }

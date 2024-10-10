@@ -47,19 +47,21 @@
                 </a>
                 <ul class="treeview-menu">
                     {{-- @can('permission-access') --}}
-                        <li><a href="{{ route('backsite.permission.index') }}"><i class="fa fa-circle-o"></i> PERMISSION</a></li>
+                    <li><a href="{{ route('backsite.permission.index') }}"><i class="fa fa-circle-o"></i> PERMISSION</a>
+                    </li>
                     {{-- @endcan --}}
 
                     {{-- @can('role-access') --}}
-                        <li><a href="{{ route('backsite.role.index') }}"><i class="fa fa-circle-o"></i> ROLE</a></li>
+                    <li><a href="{{ route('backsite.role.index') }}"><i class="fa fa-circle-o"></i> ROLE</a></li>
                     {{-- @endcan --}}
 
                     {{-- @can('type-user-access') --}}
-                        <li><a href="{{ route('backsite.type_user.index') }}"><i class="fa fa-circle-o"></i> TYPE USER</a></li>
+                    <li><a href="{{ route('backsite.type_user.index') }}"><i class="fa fa-circle-o"></i> TYPE USER</a>
+                    </li>
                     {{-- @endcan --}}
 
                     {{-- @can('user-access') --}}
-                        <li><a href="{{ route('backsite.user.index') }}"><i class="fa fa-circle-o"></i> USER</a></li>
+                    <li><a href="{{ route('backsite.user.index') }}"><i class="fa fa-circle-o"></i> USER</a></li>
                     {{-- @endcan --}}
                 </ul>
             </li>
@@ -71,27 +73,51 @@
             <!-- Menu data pendukung -->
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-pie-chart"></i>
+                    <i class="fa fa-files-o"></i>
                     <span>DATA PENDUKUNG</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     {{-- @can('mahasiswa-access') --}}
-                        <li><a href="{{ route('backsite.mahasiswa.index') }}"><i class="fa fa-circle-o"></i> DATA MAHASISWA</a></li>
+                    <li><a href="{{ route('backsite.mahasiswa.index') }}"><i class="fa fa-circle-o"></i> DATA
+                            MAHASISWA</a></li>
                     {{-- @endcan --}}
 
                     {{-- @can('dosen-access') --}}
-                        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> DATA DOSEN</a></li>
+                    <li><a href="{{ route('backsite.dosen.index') }}"><i class="fa fa-circle-o"></i> DATA DOSEN</a></li>
                     {{-- @endcan --}}
 
                     {{-- @can('prodi-access') --}}
-                        <li><a href="{{ route('backsite.prodi.index') }}"><i class="fa fa-circle-o"></i> DATA PRODI</a></li>
+                    <li><a href="{{ route('backsite.prodi.index') }}"><i class="fa fa-circle-o"></i> DATA PRODI</a></li>
                     {{-- @endcan --}}
+
+                     {{-- @can('mitra-access') --}}
+                     <li><a href="{{ route('backsite.mitra.index') }}"><i class="fa fa-circle-o"></i> DATA MITRA</a></li>
+                     {{-- @endcan --}}
 
                 </ul>
             </li>
             <!-- /.Menu data pendukung-->
             {{-- @endcan --}}
+
+            {{-- @can('pengusul-access') --}}
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-files-o"></i>
+                    <span>PENGAJUAN USULAN</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+
+
+                <ul class="treeview-menu">
+                    {{-- @can('identitas-usulan-access') --}}
+                    <li><a href="{{ route('backsite.proposal.index') }}"><i class="fa fa-circle-o"></i>
+                            IDENTITAS USULAN</a></li>
+                    {{-- @endcan --}}
+                </ul>
+            </li>
+            {{-- @endcan --}}
+
 
         </ul>
     </section>

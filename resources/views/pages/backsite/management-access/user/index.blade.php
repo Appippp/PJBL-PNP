@@ -22,9 +22,9 @@
     <section class="content">
 
         {{-- @can('user-create') --}}
-        <div class="box">
+        <div class="box collapsed-box">
             <div class="box-header with-border ">
-                <h3 class="box-title"><b>TAMBAH DATA</b></h3>
+                <h3 class="box-title">TAMBAH DATA</h3>
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                         <i class="fa fa-minus"></i>
@@ -40,11 +40,11 @@
                     <div class="d-flex justify-content-center">
                         <!-- username -->
                         <div class="form-group row">
-                            <label for="username" class="col-sm-4 form-label text-right">Username <code
+                            <label for="username" class="col-sm-4 form-label text-right">Nomor Indentitas <code
                                     style="color:red;">required</code></label>
                             <div class="col-sm-6">
                                 <input type="text" class="form-control" id="username" name="username"
-                                    placeholder="NO BP" required>
+                                    placeholder="Nomor Identitas" required>
                             </div>
                             @error('username')
                                 <span class="invalid-feedback" role="alert">
@@ -59,7 +59,7 @@
                                     style="color:red;">required</code></label>
                             <div class="col-sm-6">
                                 <input type="email" id="email" name="email" class="form-control"
-                                    placeholder="Jhoe@mail.com" value="{{ old('email') }}" autocomplete="off" required>
+                                    placeholder="Email" value="{{ old('email') }}" autocomplete="off" required>
                             </div>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -100,7 +100,7 @@
                                     style="color:red;">required</code></label>
                             <div class="col-sm-6">
                                 <select name="type_user_id" id="type_user_id" class="form-control select2" required>
-                                    <option value="{{ '' }}" disabled selected>Choose</option>
+                                    <option value="{{ '' }}" disabled selected>-- PILIH -- </option>
                                     @foreach ($type_user as $key => $type_user_item)
                                         <option value="{{ $type_user_item->id }}">{{ $type_user_item->name }}</option>
                                     @endforeach
@@ -127,7 +127,7 @@
         {{-- @can('user-table') --}}
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title"> <b>LIST USER</b></h3>
+                <h3 class="box-title">LIST USER</h3>
             </div>
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">

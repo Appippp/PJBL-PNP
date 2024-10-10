@@ -24,7 +24,7 @@
         {{-- @can('type-user-table') --}}
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title"> <b>LIST TYPE USER</b></h3>
+                <h3 class="box-title"> LIST TYPE USER</h3>
             </div>
             <div class="box-body">
                 <table id="example1" class="table table-bordered table-striped">
