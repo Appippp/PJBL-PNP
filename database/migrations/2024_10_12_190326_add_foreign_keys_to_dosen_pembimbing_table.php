@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('dosen_pembimbing', function (Blueprint $table) {
             $table->foreign('proposal_id', 'fk_dosen_pembimbing_to_proposal')->references('id')->on('proposal')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('dosen_id', 'fk_dosen_pembimbing_to_dosen')->references('id')->on('dosen')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('dospem_id', 'fk_dosen_pembimbing_to_users')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -24,7 +24,7 @@ return new class extends Migration
     {
         Schema::table('dosen_pembimbing', function (Blueprint $table) {
             $table->dropForeign('fk_dosen_pembimbing_to_proposal');
-            $table->dropForeign('fk_dosen_pembimbing_to_dosen');
+            $table->dropForeign('fk_dosen_pembimbing_to_users');
         });
     }
 };

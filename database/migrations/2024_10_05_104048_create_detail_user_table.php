@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->index('fk_detail_user_to_users');
             $table->foreignId('type_user_id')->nullable()->index('fk_detail_user_to_type_user');
-            $table->string('contact')->nullable();
-            $table->string('address')->nullable();
-            $table->enum('gender', [1,2])->nullable();
+            $table->foreignId('prodi_id')->nullable()->index('fk_detail_user_to_prodi');
+            $table->string('tahun_masuk')->nullable();
+            $table->string('no_telp')->nullable();
+            $table->text('alamat')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

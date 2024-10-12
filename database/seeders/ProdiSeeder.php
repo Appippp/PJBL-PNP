@@ -22,6 +22,15 @@ class ProdiSeeder extends Seeder
                 'kode_prodi' => 'KD-TL',
                 'nama_prodi' => 'D3 Teknik Listrik',
             ],
+            [
+                'kode_prodi' => 'KD-TM',
+                'nama_prodi' => 'D3 Teknik Mesin',
+            ],
+            [
+                'kode_prodi' => 'KD-TS',
+                'nama_prodi' => 'D3 Teknik Sipil',
+            ],
+
         ];
 
         \App\Models\Prodi::insert($prodi);

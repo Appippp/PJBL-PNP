@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kaprodi', function (Blueprint $table) {
+        Schema::create('dosen_pembimbing', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('proposal_id')->nullable()->index('fk_kaprodi_to_proposal');
-            $table->foreignId('dosen_id')->nullable()->index('fk_kaprodi_to_dosen');
-            $table->enum('validasi_kaprodi', ['revisi', 'disetujui', 'belum diproses'])->default('belum diproses');
+            $table->foreignId('proposal_id')->nullable()->index('fk_dosen_pembimbing_to_proposal');
+            $table->foreignId('dospem_id')->nullable()->index('fk_dosen_pembimbing_to_users');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kaprodi');
+        Schema::dropIfExists('dosen_pembimbing');
     }
 };

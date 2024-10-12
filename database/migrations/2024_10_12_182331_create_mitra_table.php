@@ -11,15 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('dosen', function (Blueprint $table) {
+        Schema::create('mitra', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->index('fk_dosen_to_users');
-            $table->foreignId('prodi_id')->nullable()->index('fk_dosen_to_prodi');
-            $table->string('nidn')->unique();
-            $table->string('nama_dosen');
-            $table->enum('jk', [1,2]);
+            $table->foreignId('proposal_id')->nullable()->index('fk_mitra_to_proposal');
+            $table->string('nama_mitra');
+            $table->longText('alamat');
             $table->string('no_telp');
-            $table->longText('alamat')->nullable();
+            $table->string('email')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('dosen');
+        Schema::dropIfExists('mitra');
     }
 };

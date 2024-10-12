@@ -44,4 +44,19 @@ class Proposal extends Model
     {
         return $this->hasMany(Kelompok::class, 'proposal_id');
     }
+
+    public function dosen_pembimbing()
+    {
+        return $this->hasMany(DosenPembimbing::class, 'proposal_id');
+    }
+
+    public function kaprodi()
+    {
+        return $this->hasMany(Kaprodi::class, 'proposal_id');
+    }
+
+    public function detail_proposal()
+    {
+        return $this->hasMany(DetailProposal::class, 'proposal_id');
+    }
 }

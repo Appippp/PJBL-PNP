@@ -16,24 +16,14 @@ class UserSeeder extends Seeder
     {
         $user = [
             [
-                'username'           => 'superadmin',
-                'email'          => 'superadmin@mail.com',
+                'nama_lengkap'           => 'Super Admin',//1
+                'no_identitas'          => 'superadmin',
                 'password'       => Hash::make('superadmin'),
-                'remember_token' => null,
                 'created_at'     => date('Y-m-d H:i:s'),
                 'updated_at'     => date('Y-m-d H:i:s'),
             ],
 
-            [
-                'username'           => '2101094006',
-                'email'          => '2101094006@mail.com',
-                'password'       => Hash::make('2101094006'),
-                'remember_token' => null,
-                'created_at'     => date('Y-m-d H:i:s'),
-                'updated_at'     => date('Y-m-d H:i:s'),
-            ],
 
-            
         ];
 
         User::insert($user);

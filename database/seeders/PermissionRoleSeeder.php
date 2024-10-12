@@ -25,5 +25,8 @@ class PermissionRoleSeeder extends Seeder
 
          // for admin
          Role::findOrFail(2)->permission()->sync($user_permissions);
+
+
+
     }
 }

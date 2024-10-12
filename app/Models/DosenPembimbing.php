@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class AnggotaKelompok extends Model
+class DosenPembimbing extends Model
 {
     // use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'anggota_kelompok';
+    protected $table = 'dosen_pembimbing';
 
     protected $dates = [
         'created_at',
@@ -20,26 +20,27 @@ class AnggotaKelompok extends Model
     ];
 
     protected $fillable = [
-        'kelompok_id',
-        'anggota_id', // berlasi kemahasiswa menjadi anggota
-        'notifikasi',
+        'proposal_id',
+        'dosen_id',
+        'validasi_dospem',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function kelompok()
+    public function proposal()
     {
-        return $this->belongsTo(Kelompok::class, 'kelompok_id', 'id');
+        return $this->belongsTo(Proposal::class, 'proposal_id');
     }
 
-    public function mahasiswa()
+    public function dosen()
     {
-        return $this->belongsTo(Mahasiswa::class, 'anggota_id', 'id');
+        return $this->belongsTo(Dosen::class, 'dosen_id');
     }
 
     public function detail_proposal()
     {
-        return $this->hasMany(DetailProposal::class, 'kelompok_id');
+        return $this->hasMany(DetailProposal::class, 'dospem_id');
     }
+
 }

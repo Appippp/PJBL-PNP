@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers\Backsite;
 
+use File;
 use App\Models\Mitra;
 use App\Models\Kelompok;
 use App\Models\Proposal;
 use App\Models\Mahasiswa;
+use App\Models\DetailUser;
 use Illuminate\Http\Request;
+use App\Models\DetailProposal;
 use App\Models\AnggotaKelompok;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Proposal\StoreProposalRequest;
-use App\Models\DetailUser;
 use Illuminate\Support\Facades\Auth; // Tambahkan baris ini
-use File;
-use Illuminate\Support\Facades\Redis;
 
 class ProposalController extends Controller
 {
@@ -75,6 +76,15 @@ class ProposalController extends Controller
 
         $proposal = Proposal::create($data);
 
+        DetailProposal::create([
+            'proposal_id' => $proposal->id,
+            'mitra_id' => null,
+            'dosen_pembimbing_id' => null,
+            'kaprodi_id' => null,
+            'kelompok_id' => null,
+
+        ]);
+
         // Setelah sukses menyimpan data, set flash message
         session()->flash('success', 'Data usulan berhasil disimpan.');
         return redirect()->route('backsite.proposal.index');
@@ -93,7 +103,9 @@ class ProposalController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $detail_proposal = DetailProposal::find($id);
+
+        return view('pages.backsite.identitas-pengusul.edit', compact('detail_proposal'));
     }
 
     /**

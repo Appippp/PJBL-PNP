@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('kelompok', function (Blueprint $table) {
-            $table->foreign('proposal_id', 'fk_kelompok_to_proposal')->references('id')->on('proposal')->onUpdate('CASCADE')->onDelete('CASCADE');
-            $table->foreign('ketua_id', 'fk_kelompok_to_mahasiswa')->references('id')->on('mahasiswa')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('proposal_id', 'fk_kelompok_to_proposal')->references('id')->on('proposal')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('ketua_id', 'fk_kelompok_to_users')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -24,7 +24,7 @@ return new class extends Migration
     {
         Schema::table('kelompok', function (Blueprint $table) {
             $table->dropForeign('fk_kelompok_to_proposal');
-            $table->dropForeign('fk_kelompok_to_mahasiswa');
+            $table->dropForeign('fk_kelompok_to_users');
         });
     }
 };

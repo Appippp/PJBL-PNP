@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reviewer', function (Blueprint $table) {
+        Schema::create('anggota_kelompok', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('kelompok_id')->nullable()->index('fk_anggota_kelompok_to_kelompok');
+            $table->foreignId('anggota_id')->nullable()->index('fk_anggota_kelompok_to_users');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('reviewer');
+        Schema::dropIfExists('anggota_kelompok');
     }
 };

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('kelompok', function (Blueprint $table) {
             $table->id();
             $table->foreignId('proposal_id')->nullable()->index('fk_kelompok_to_proposal');
-            $table->foreignId('ketua_id')->nullable()->index('fk_kelompok_to_mahasiswa');
+            $table->foreignId('ketua_id')->nullable()->index('fk_kelompok_to_users');
             $table->timestamps();
             $table->softDeletes();
         });

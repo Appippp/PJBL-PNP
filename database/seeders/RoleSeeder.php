@@ -20,17 +20,17 @@ class RoleSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'title'      => 'Admin', // 1
+                'title'      => 'Kaprodi', // 2
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'title'      => 'Dosen', // 2
+                'title'      => 'Dosen', // 3
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'title'      => 'Mahasiswa', // 3
+                'title'      => 'Mahasiswa', // 4
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
@@ -45,7 +45,7 @@ class RoleSeeder extends Seeder
                 'updated_at' => date('Y-m-d H:i:s'),
             ],
             [
-                'title'      => 'Penguji', // 6
+                'title'      => 'Operator', // 6
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ],

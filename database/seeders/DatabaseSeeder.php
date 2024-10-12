@@ -28,8 +28,6 @@ class DatabaseSeeder extends Seeder
             PermissionRoleSeeder::class,
             DetailUserSeeder::class,
             ProdiSeeder::class,
-            MitraSeeder::class,
-
         ]);
     }
 }

@@ -42,4 +42,14 @@ class Dosen extends Model
     {
         return $this->belongsTo(Prodi::class, 'prodi_id', 'id');
     }
+
+    public function dosen_pembimbing()
+    {
+        return $this->hasMany(DosenPembimbing::class, 'dosen_id');
+    }
+
+    public function kaprodi()
+    {
+        return $this->hasMany(Kaprodi::class, 'dosen_id');
+    }
 }

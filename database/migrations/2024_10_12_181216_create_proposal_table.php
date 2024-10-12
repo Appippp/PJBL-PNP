@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mitra', function (Blueprint $table) {
+        Schema::create('proposal', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('proposal_id')->nullable()->index('fk_mitra_to_proposal');
-            $table->string('nama_mitra');
-            $table->text('alamat');
-            $table->string('kontak');
+            $table->foreignId('mahasiswa_id')->nullable()->index('fk_proposal_to_users');
+            $table->foreignId('skema_id')->index('fk_proposal_to_skema');
+            $table->string('judul');
+            $table->longText('upload');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mitra');
+        Schema::dropIfExists('proposal');
     }
 };
