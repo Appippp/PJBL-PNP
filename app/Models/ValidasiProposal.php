@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class DetailProposal extends Model
+class ValidasiProposal extends Model
 {
     // use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'detail_proposal';
+    protected $table = 'validasi_proposal';
 
     protected $dates = [
         'created_at',
@@ -21,10 +21,11 @@ class DetailProposal extends Model
 
     protected $fillable = [
         'proposal_id',
-        'dospem_id',
-        'kaprodi_id',
         'mitra_id',
-        'kelompok_id',
+        'anggota_id',
+        'dospem_d',
+        'validasi_dospem',
+        'validasi_pimpinan',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -35,24 +36,20 @@ class DetailProposal extends Model
         return $this->belongsTo(Proposal::class, 'proposal_id', 'id');
     }
 
-    public function dosen_pembimbing()
-    {
-        return $this->belongsTo(DosenPembimbing::class, 'dospem_id', 'id');
-    }
-
-
-    public function kaprodi()
-    {
-        return $this->belongsTo(Kaprodi::class, 'kaprodi_id', 'id');
-    }
-
     public function mitra()
     {
         return $this->belongsTo(Mitra::class, 'mitra_id', 'id');
     }
 
-    public function anggota_kelompok()
+    public function anggota()
     {
-        return $this->belongsTo(AnggotaKelompok::class, 'kelompok_id', 'id');
+        return $this->belongsTo(AnggotaKelompok::class, 'anggota_id', 'id');
     }
+
+    public function dospem()
+    {
+        return $this->belongsTo(DosenPembimbing::class, 'dospem_d', 'id');
+    }
+
+    
 }

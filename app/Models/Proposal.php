@@ -23,21 +23,17 @@ class Proposal extends Model
 
     protected $fillable = [
         'mahasiswa_id',
-        'judul_proposal',
-        'file_proposal',
+        'skema_id',
+        'judul',
+        'upload',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
-    public function mahasiswa()
+    public function dosen_pembimbing()
     {
-        return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id','id');
-    }
-
-    public function mitra()
-    {
-        return $this->hasMany(Mitra::class, 'proposal_id');
+        return $this->hasMany(DosenPembimbing::class, 'proposal_id');
     }
 
     public function kelompok()
@@ -45,18 +41,23 @@ class Proposal extends Model
         return $this->hasMany(Kelompok::class, 'proposal_id');
     }
 
-    public function dosen_pembimbing()
+    public function mitra()
     {
-        return $this->hasMany(DosenPembimbing::class, 'proposal_id');
+        return $this->hasMany(Mitra::class, 'proposal_id');
     }
 
-    public function kaprodi()
+    public function user()
     {
-        return $this->hasMany(Kaprodi::class, 'proposal_id');
+        return $this->belongsTo(User::class, 'mahasiswa_id', 'id');
     }
 
-    public function detail_proposal()
+    public function skema()
     {
-        return $this->hasMany(DetailProposal::class, 'proposal_id');
+        return $this->belongsTo(Skema::class, 'skema_id', 'id');
+    }
+
+    public function validasi_proposal()
+    {
+        return $this->hasMany(ValidasiProposal::class, 'proposal_id');
     }
 }

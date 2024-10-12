@@ -30,20 +30,22 @@ class Kelompok extends Model
     ];
 
 
+    public function anggota_kelompok()
+    {
+        return $this->hasMany(AnggotaKelompok::class, 'kelompok_id');
+    }
+
     public function proposal()
     {
         return $this->belongsTo(Proposal::class, 'proposal_id', 'id');
     }
 
-    public function mahasiswa()
+    public function user()
     {
-        return $this->belongsTo(Mahasiswa::class, 'ketua_id', 'id');
+        return $this->belongsTo(User::class, 'ketua_id', 'id');
     }
 
-    public function anggota_kelompok()
-    {
-        return $this->hasMany(AnggotaKelompok::class, 'kelompok_id');
-    }
+
 
 
 }

@@ -33,13 +33,13 @@ class AnggotaKelompok extends Model
         return $this->belongsTo(Kelompok::class, 'kelompok_id', 'id');
     }
 
-    public function mahasiswa()
+    public function user()
     {
-        return $this->belongsTo(Mahasiswa::class, 'anggota_id', 'id');
+        return $this->belongsTo(User::class, 'anggota_id', 'id');
     }
 
-    public function detail_proposal()
+    public function validasi_proposal()
     {
-        return $this->hasMany(DetailProposal::class, 'kelompok_id');
+        return $this->hasMany(ValidasiProposal::class, 'anggota_id', 'id');
     }
 }

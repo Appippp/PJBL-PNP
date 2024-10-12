@@ -27,14 +27,16 @@ class Prodi extends Model
         'deleted_at',
     ];
 
-
-    public function mahasiswa()
+    public function detail_user()
     {
-        return $this->hasMany(Mahasiswa::class, 'prodi_id');
+        return $this->hasMany(DetailUser::class, 'prodi_id');
     }
 
-    public function dosen()
+    public function skema()
     {
-        return $this->hasMany(Dosen::class, 'prodi_id');
+        return $this->hasMany(Skema::class, 'prodi_id');
     }
+
+
+
 }

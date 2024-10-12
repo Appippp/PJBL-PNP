@@ -22,9 +22,10 @@ class DetailUser extends Model
     protected $fillable = [
         'user_id',
         'type_user',
-        'contact',
-        'address',
-        'gender',
+        'prodi_id',
+        'tahun_masuk',
+        'no_telp',
+        'alamat',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -38,5 +39,10 @@ class DetailUser extends Model
     public function type_user()
     {
         return $this->belongsTo(TypeUser::class, 'type_user_id', 'id');
+    }
+
+    public function prodi()
+    {
+        return $this->belongsTo(Prodi::class, 'prodi_id', 'id');
     }
 }

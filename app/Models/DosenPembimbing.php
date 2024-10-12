@@ -21,26 +21,31 @@ class DosenPembimbing extends Model
 
     protected $fillable = [
         'proposal_id',
-        'dosen_id',
-        'validasi_dospem',
+        'dospem_id',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'dospem_id', 'id');
+    }
+
     public function proposal()
     {
-        return $this->belongsTo(Proposal::class, 'proposal_id');
+        return $this->belongsTo(Proposal::class, 'proposal_id', 'id');
     }
 
-    public function dosen()
+    public function dosen_pembimbing()
     {
-        return $this->belongsTo(Dosen::class, 'dosen_id');
+        return $this->hasMany(DosenPembimbing::class, 'dospem_id');
     }
 
-    public function detail_proposal()
+    public function validasi_proposal()
     {
-        return $this->hasMany(DetailProposal::class, 'dospem_id');
+        return $this->hasMany(ValidasiProposal::class, 'dospem_id');
     }
 
 }

@@ -24,6 +24,12 @@ class Mitra extends Model
         'nama_mitra',
         'alamat',
         'kontak',
+        'no_telp',
+        'email',
+        'deleted_at',
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 
     public function proposal()
@@ -31,9 +37,10 @@ class Mitra extends Model
         return $this->belongsTo(Proposal::class, 'proposal_id', 'id');
     }
 
-    public function detail_proposal()
+    public function validasi_proposal()
     {
-        return $this->hasMany(DetailProposal::class, 'mitra_id');
+        return $this->hasMany(ValidasiProposal::class, 'mitra_id', 'id');
     }
+
 
 }

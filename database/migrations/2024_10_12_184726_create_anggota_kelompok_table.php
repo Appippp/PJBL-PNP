@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('kelompok_id')->nullable()->index('fk_anggota_kelompok_to_kelompok');
             $table->foreignId('anggota_id')->nullable()->index('fk_anggota_kelompok_to_users');
+            $table->boolean('notifikasi')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

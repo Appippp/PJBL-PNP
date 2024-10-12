@@ -18,8 +18,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'username',
-        'email',
+        'nama_lengkap',
+        'no_identitas',
         'password',
     ];
 
@@ -30,7 +30,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**
@@ -61,14 +60,30 @@ class User extends Authenticatable
          return $this->hasMany(RoleUser::class, 'user_id');
      }
 
-     public function mahasiswa()
+
+     public function anggota_kelompok()
      {
-         return $this->hasOne(Mahasiswa::class, 'user_id');
+         return $this->hasMany(AnggotaKelompok::class, 'anggota_id');
      }
 
-
-     public function dosen()
+     public function dosen_pembimbing()
      {
-         return $this->hasOne(Dosen::class, 'user_id');
+         return $this->hasMany(DosenPembimbing::class, 'dospem_id');
      }
+
+     public function kelompok()
+     {
+         return $this->hasMany(Kelompok::class, 'ketua_id');
+     }
+
+     public function proposal()
+     {
+         return $this->hasMany(Proposal::class, 'mahasiswa_id');
+     }
+
+     public function skema()
+     {
+         return $this->hasMany(Skema::class, 'pimpinan_id');
+     }
+
 }
